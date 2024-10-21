@@ -1,0 +1,37 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: AWS CloudFormation template to create an S3 bucket
+
+Parameters:
+  BucketName:
+    Type: String
+    Description: Name of the S3 bucket
+  Location:
+    Type: String
+    Default: us-east-1
+    Description: Location for the S3 bucket
+  StorageClass:
+    Type: String
+    Default: STANDARD
+    AllowedValues:
+      - STANDARD
+      - REDUCED_REDUNDANCY
+      - STANDARD_IA
+      - ONEZONE_IA
+      - INTELLIGENT_TIERING
+      - GLACIER
+      - DEEP_ARCHIVE
+    Description: The storage class of the S3 bucket
+
+Resources:
+  S3Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Ref BucketName
+      Tags:
+        - Key: Environment
+          Value: CloudFormation
+
+Outputs:
+  BucketName:
+    Description: Name of the S3 bucket
+    Value: !Ref S3Bucket
