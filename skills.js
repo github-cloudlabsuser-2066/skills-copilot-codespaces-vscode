@@ -40,14 +40,94 @@ console.log(findSmallest7thDigitPrime());
 
 
 /**
- * Calculates the sum of two numbers.
+ * Calculates the result of subtracting the second number from the first number.
  *
  * @param {number} var1 - The first number.
  * @param {number} var2 - The second number.
- * @returns {number} The sum of var1 and var2.
+ * @returns {number} The result of the subtraction.
  */
 function calculateNumbers(var1, var2) {
     // Add your implementation here
     return var1 - var2; // Changed implementation to subtract the numbers
 }
 
+
+/**
+ * Multiplies two numbers.
+ *
+ * @param {number} a - The first number.
+ * @param {number} b - The second number.
+ * @returns {number} The product of the two numbers.
+ */
+function multipleNumbers(a, b) {
+    return a * b;
+}
+
+
+
+function reverseSentence(sentence) {
+    // Split the sentence into words
+    let words = sentence.split(' ');
+
+    // Reverse the array of words
+    let reversedWords = words.reverse();
+
+    // Join the reversed array back into a string
+    let reversedSentence = reversedWords.join(' ');
+
+    // Capitalize the first letter of the resulting string
+    reversedSentence = reversedSentence.charAt(0).toUpperCase() + reversedSentence.slice(1);
+
+    return reversedSentence;
+}
+
+// Example usage
+let inputSentence = "hello world this is a test";
+let outputSentence = reverseSentence(inputSentence);
+console.log(outputSentence); // Output: "Test a is this world hello"
+
+
+
+const data = [
+    [
+      { name: 'John', age: 25 },
+      { name: 'Jane', age: 30 }
+    ],
+    [
+      { name: 'Bob', age: 40 }
+    ]
+  ];
+
+
+
+const lowerCaseNames = data.flat().map(person => person.name.toLowerCase());
+console.log(lowerCaseNames); // Output: ['john', 'jane', 'bob']
+
+const names = data.flat().map(person => person.name);
+console.log(names); // Output: ['John', 'Jane', 'Bob']
+
+/**
+ * Validates if a string is an Argentinian phone number.
+ *
+ * Argentinian phone numbers typically follow the format:
+ * - Country code: +54
+ * - Area code: 2 to 4 digits
+ * - Local number: 6 to 8 digits
+ *
+ * Examples:
+ * - +54 9 11 1234 5678
+ * - +54 11 1234 5678
+ * - +54 351 123 4567
+ *
+ * @param {string} phoneNumber - The phone number to validate.
+ * @returns {boolean} - Returns true if the phone number is valid, otherwise false.
+ */
+function isValidArgentinianPhoneNumber(phoneNumber) {
+    const regex = /^\+54\s?(\d{2,4})\s?(\d{6,8})$/;
+    return regex.test(phoneNumber);
+}
+
+// Example usage
+console.log(isValidArgentinianPhoneNumber("+54 11 1234 5678")); // Output: true
+console.log(isValidArgentinianPhoneNumber("+54 351 123 4567")); // Output: true
+console.log(isValidArgentinianPhoneNumber("+54 123 456")); // Output: false
